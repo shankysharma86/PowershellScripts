@@ -31,7 +31,7 @@ While ($i -lt $expression.Length){
             push('$expression[$i]')
           }
           else if ($)
-          pop
+          pop()
         }
     '-' { write-host "This is -"}
     '*' { write-host "This is *"}
