@@ -1,20 +1,27 @@
 [string]$OutputExpression
-[array]$StackArray
+[array]$StackArray = ''
 [int]$Top=-1
 [boolean]$IsEmpty=$true
 
-function [int] StackEngine ([char]$temp) {
-  write-host "I am in StackEngine"
-  if  ($StackArray -eq)
+function StackEngine () {
+  param([char]$temp)
+  write-host "I am in StackEngine: $temp"
+  if ($Top -eq -1) {
+    push($temp)
+  }
+  if ('+' -eq '-') {Write-host "We are equal"}
 }
 
-function push ([char]$temp) {
-
+function push () {
+  param([char]$temp)
+  $Top = $Top+1
+  $StackArray[$Top] = $temp
 }
 
-function [char] pop () {
-  StackArray[$Top]
-
+function pop () {
+  param([char]$temp)
+  --$Top
+  $StackArray[$Top] = $temp
 }
 
 Write-Host "Enter the expression in Infix"
@@ -23,15 +30,9 @@ Write-Host "Enter the expression in Infix"
 
 While ($i -lt $expression.Length){
   write-host $expression[$i]
-  # If ($expression -is ('+' -OR '-' -OR '*' -OR '/' -OR '^')) {}
   switch ($expression[$i]) {
-    '+' { write-Host "This is +"
+    '+' {
           StackEngine($expression[$i])
-          if ($Top -eq -1) {
-            push('$expression[$i]')
-          }
-          else if ($)
-          pop
         }
     '-' { write-host "This is -"}
     '*' { write-host "This is *"}
@@ -47,3 +48,4 @@ While ($i -lt $expression.Length){
 }
 
 Write-Host $OutputExpression
+Write-Host "Stack Value: " $StackArray
